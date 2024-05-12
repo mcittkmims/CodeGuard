@@ -1,0 +1,31 @@
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    const mid = Math.floor(arr.length / 2); // Finding the middle of the array
+    const leftHalf = arr.slice(0, mid); // Dividing the array elements into 2 halves
+    const rightHalf = arr.slice(mid);
+
+    return merge(mergeSort(leftHalf), mergeSort(rightHalf)); // Merge sorted left and right halves
+}
+
+function merge(left, right) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    // Compare elements from left and right arrays and push smaller element into result array
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    // Push remaining elements of left and right arrays into result array
+    return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}

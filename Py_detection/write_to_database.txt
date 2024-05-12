@@ -1,0 +1,10 @@
+def run_c_program(command):
+
+
+    try:
+        # Run the command without capturing output
+        subprocess.run(command, shell=True)
+        print("C program executed successfully.")
+    except subprocess.CalledProcessError as e:
+        # Handle any errors or exceptions
+        print("Error:", e)
